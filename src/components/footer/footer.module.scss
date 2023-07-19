@@ -1,0 +1,104 @@
+@import "../../styles/global.scss";
+
+.footer {
+  @apply text-gray-100 py-12;
+  background-color: $primary-dark-color;
+
+  .container {
+    @apply flex flex-wrap gap-x-16 gap-y-8 items-start;
+    .logo {
+      @apply flex items-center;
+
+      &_icon {
+        width: 3rem;
+        height: 3rem;
+
+        svg {
+          width: 100%;
+          height: 100%;
+
+          path {
+            @apply fill-gray-100;
+          }
+        }
+      }
+
+      &_text {
+        @apply ml-2 text-gray-100;
+        font-size: 1.75rem;
+        font-weight: 700;
+      }
+    }
+
+    .footer_list {
+      @apply flex flex-col;
+
+      .footer_item {
+        @apply w-full;
+
+        .footer_link {
+          @apply px-2 flex capitalize;
+
+          &.with_icon {
+            @apply items-center;
+
+            .footer_link_icon {
+              @apply mr-2 text-lg;
+
+              path {
+                stroke: $white-color;
+              }
+            }
+          }
+
+          &_text {
+            @apply py-1 relative;
+
+            &::before {
+              @apply absolute bottom-0 left-0 rounded-md;
+              content: "";
+              height: 3px;
+              background-color: $white-color;
+            }
+          }
+
+          &.active {
+
+            .footer_link_text::before {
+              width: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .bottom_side {
+    @apply mt-8 border-t border-gray-600 pt-4;
+
+    .text {
+
+      .link {
+        @apply underline;
+        user-select: text;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    .container {
+      .logo {
+        &_icon {
+          width: 2.25rem;
+          height: 2.25rem;
+        }
+
+        &_text {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}

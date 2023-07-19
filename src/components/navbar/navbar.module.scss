@@ -1,0 +1,218 @@
+@import "../../styles/global.scss";
+// import LanguageSelector from "../languageSelector/LanguageSelector"
+
+.navbar {
+  @apply sticky top-0 left-0 w-full border-b border-transparent bg-gray-100;
+  z-index: $navbar-z;
+  padding: 1rem 0;
+  transition: .3s ease;
+
+  &.active {
+    @apply border-gray-300;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(1rem);
+    z-index: -1;
+  }
+
+  .container {
+    @apply flex justify-between items-center;
+
+    .logo {
+      @apply flex items-center;
+
+      &_icon {
+        width: 3rem;
+        height: 3rem;
+
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      &_text {
+        @apply ml-2;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: $primary-color;
+      }
+    }
+
+    .nav_toggle {
+      @apply relative flex items-center justify-center cursor-pointer rounded-2xl border-2 border-transparent;
+      width: 4rem;
+      height: 4rem;
+      transition: 0.2s ease;
+
+      &:hover,
+      &.active {
+        @apply border-gray-500;
+      }
+
+      &:hover {
+        @apply border-gray-300;
+
+        &.active {
+          @apply border-gray-500;
+        }
+      }
+
+      span {
+        @apply absolute w-1/2;
+        height: 3px;
+        background-color: $primary-color;
+        transition: 0.3s ease;
+
+        &:nth-child(1) {
+          transform: translateY(-6px);
+        }
+
+        &:nth-child(2) {
+          transform: translateY(6px);
+        }
+      }
+
+      &.active {
+        span:nth-child(1) {
+          transform: translateY(0) rotate(-45deg);
+        }
+
+        span:nth-child(2) {
+          transform: translateY(0) rotate(45deg);
+        }
+      }
+    }
+  }
+
+  .sidebar {
+    @apply absolute top-full py-12 px-8 border border-transparent flex-col justify-between;
+    --navHeight: 96px;
+    right: -300px;
+    width: 300px;
+    height: calc(100vh - var(--navHeight));
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(1rem);
+    overflow-y: auto;
+    overflow-x: auto;
+    transition: .3s;
+    visibility: hidden;
+    display: none;
+
+    &.active {
+      @apply border-gray-300;
+      right: 0;
+      visibility: visible;
+      display: flex;
+    }
+
+    &.android {
+      @apply pb-24;
+    }
+
+    .nav_list {
+      @apply flex flex-col w-full py-4;
+
+      .nav_item {
+        @apply w-full;
+
+        .nav_link {
+          @apply px-4 flex rounded-md items-center justify-center;
+
+          &_text {
+            @apply capitalize relative py-1;
+            color: $primary-color;
+            font-weight: 500;
+            font-size: 1.125rem;
+            
+            &::before {
+              @apply absolute bottom-0 left-0 rounded-md w-0;
+              content: "";
+              height: 3px;
+              background-color: $primary-color;
+              transition: .3s ease;
+            }
+          }
+
+          &.active {
+
+            .nav_link_text {
+
+              &::before {
+                width: 50%;
+              }
+            }
+
+            &:hover {
+              .nav_link_text::before {
+                width: 50%;
+              }
+            }
+          }
+
+          &:hover {
+
+            .nav_link_text {
+
+              &::before {
+                width: 100%;
+              }
+            }
+          }
+        }
+
+        &:not(:nth-child(1)) {
+          @apply mt-2;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    .container {
+      .logo {
+        &_icon {
+          width: 2.25rem;
+          height: 2.25rem;
+        }
+
+        &_text {
+          font-size: 1.5rem;
+        }
+      }
+
+      .nav_toggle {
+        width: 3rem;
+        height: 3rem;
+
+        span {
+          @apply w-2/3;
+        }
+      }
+    }
+
+    .sidebar {
+      --navHeight: 80px;
+    }
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .navbar {
+
+    .sidebar {
+      width: 100%;
+      overflow-x: auto;
+    }
+  }
+}

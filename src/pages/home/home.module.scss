@@ -1,0 +1,163 @@
+@import "../../styles/global.scss";
+
+.home {
+  .header {
+    @apply py-12 overflow-hidden;
+
+    .container {
+      @apply flex flex-col md:flex-row gap-12 md:items-center;
+
+      .header_banner {
+        @apply w-full md:w-1/2;
+
+        .img {
+          @apply max-w-[350px] md:max-w-[unset] w-full h-auto mx-auto;
+        }
+      }
+
+      .header_info {
+        @apply w-full md:w-1/2;
+
+        .name_title {
+        }
+
+        .main_title {
+          font-size: 2.5rem;
+          font-weight: 700;
+        }
+
+        .descriptions {
+          @apply flex flex-col;
+
+          .description {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+          }
+        }
+
+        .btn {
+          @apply mt-8;
+        }
+      }
+    }
+  }
+
+  .projects {
+    @apply shadow-2xl overflow-hidden rounded-t-[2rem] md:rounded-t-[4rem];
+    background-color: $light-color;
+    // border-radius: 4rem 4rem 0 0;
+
+    .container {
+      .section_title {
+        @apply mx-auto w-max;
+      }
+
+      .project_wrapper {
+        @apply my-8;
+
+        .project {
+          @apply relative rounded-2xl overflow-hidden shadow-lg;
+          min-height: 220px;
+
+          .img_wrapper {
+            @apply w-full h-max min-h-full relative;
+            background: url("../../assets/images/project-img.png");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            transition: .3s ease-in;
+
+            .img {
+              width: 100%;
+              min-height: 220px;
+              height: auto;
+              object-fit: cover
+            }
+          }
+
+          .detail_wrapper {
+            @apply absolute top-0 left-0 w-full h-full p-4 flex flex-col justify-end;
+            background: rgb(68, 89, 100);
+            background: linear-gradient(
+              180deg,
+              rgba(68, 89, 100, 0.5) 0%,
+              rgba(68, 89, 100, 0.9) 80%
+            );
+            color: $white-color;
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s ease-in;
+
+            .detail_title {
+              font-weight: 600;
+              font-size: 1.125rem;
+            }
+
+            .detail_text {
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 4;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+
+          &:hover {
+            .img_wrapper {
+              transform: scale(1.05);
+            }
+
+            .detail_wrapper {
+              opacity: 1;
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .home {
+    .header {
+      .container {
+        .header_info {
+          .descriptions {
+            .description {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (hover: none) {
+  .home {
+
+    .projects {
+
+      .container {
+
+        .project_wrapper {
+
+          .project {
+
+            .detail_wrapper {
+              opacity: 1;
+              visibility: visible;
+            }
+
+            &:hover {
+              .img_wrapper {
+                transform: scale(1);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

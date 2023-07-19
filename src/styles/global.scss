@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Variables
+@import "./variables.scss";
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  user-select: text
+}
+
+body {
+  @apply bg-gray-100;
+  color: $primary-color
+  // overflow-x: hidden;
+}
+
+section {
+  @apply py-12;
+}
+
+// --! main-layout start !--
+.main-layout {
+  @apply flex flex-col justify-between relative;
+  min-height: 100vh;
+
+  .main {
+    @apply flex-1 relative;
+  }
+}
+// --! main-layout end !--
+
+// reusable classes start
+.container {
+  max-width: 1100px;
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+  padding: unset;
+
+  &.inner {
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+.primary_btn {
+  @apply py-4 px-8 rounded-2xl flex w-max text-gray-100 capitalize;
+  background-color: $primary-color;
+  transition: .3s ease;
+  font-weight: 500;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &.center {
+    @apply mx-auto my-4;
+  }
+}
+
+// reusable tags {
+a {
+  user-select: none;
+}
+
+button {
+  user-select: none;
+  cursor: pointer;
+}
+
+h2 {
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+@media all and (orientation: landscape) and (display-mode: fullscreen) {
+  body {
+    transform: rotate(0deg);
+  }
+}

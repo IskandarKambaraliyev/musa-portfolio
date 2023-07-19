@@ -1,0 +1,47 @@
+@import "../../styles/global.scss";
+
+.ripple_button {
+  @apply flex w-max relative isolate appearance-none cursor-pointer py-4 px-8 capitalize rounded-2xl text-gray-100 overflow-hidden font-medium shadow-lg;
+  background-color: $primary-dark-color !important;
+
+  &.center {
+    @apply mx-auto;
+  }
+
+  &::before {
+    @apply absolute rounded-full;
+    content: "";
+    top: var(--y);
+    left: var(--x);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 750ms;
+    z-index: -1;
+    width: 150%;
+    aspect-ratio: 1 / 1;
+    background: $primary-dark-color;
+  }
+
+  &.pulse::before {
+    animation: pulse 500ms;
+  }
+
+  &:hover {
+    background-color: $primary-color !important;
+  }
+
+  &:disabled {
+    background-color: $primary-500-color !important;
+    cursor: not-allowed;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+  }
+}

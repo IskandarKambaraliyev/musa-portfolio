@@ -1,0 +1,78 @@
+@import "../../styles/global.scss";
+
+.resume {
+  @apply py-8;
+
+  .main_info {
+    @apply pb-4 w-max flex flex-col mx-auto border-b border-gray-300 text-center;
+
+    .title {
+      @apply text-2xl sm:text-4xl md:text-6xl font-bold capitalize;
+    }
+
+    .description {
+      @apply capitalize font-semibold;
+      letter-spacing: 3px;
+    }
+  }
+
+  .info_wrapper {
+    @apply my-12;
+
+    .info {
+      @apply p-8 bg-white rounded-xl shadow-lg;
+
+      .info_title {
+        @apply text-2xl font-bold capitalize mb-4;
+        letter-spacing: 2px;
+      }
+
+      .info_text {
+        // @apply ;
+      }
+
+      .wrapper {
+        @apply flex flex-col mt-4;
+
+        .date {
+          @apply text-xl font-semibold;
+        }
+
+        .name {
+          @apply font-medium;
+        }
+
+        .description {
+          color: $primary-700-color;
+        }
+      }
+
+      ul.wrapper {
+        @apply mt-0;
+        list-style: unset;
+        list-style-position: inside;
+
+        &.grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 2rem;
+
+          .name {
+            @apply w-max;
+          }
+        }
+
+        @media screen and (max-width: 450px) {
+          &.grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+  
+            .name {
+              @apply w-max;
+            }
+          }
+        }
+      }
+    }
+  }
+}

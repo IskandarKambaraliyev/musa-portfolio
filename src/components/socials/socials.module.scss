@@ -1,0 +1,9 @@
+@import "../../styles/global.scss";
+
+.socials {
+  position: fixed;
+  z-index: $socials-z;
+  bottom: 5rem;
+  right: 2rem;
+  background-color: cyan;
+}

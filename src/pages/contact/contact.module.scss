@@ -1,0 +1,60 @@
+@import "../../styles/global.scss";
+
+.contact {
+  @apply pt-8 pb-16;
+
+  .header {
+    .container {
+      @apply flex flex-col md:flex-row rounded-2xl border-2 border-white overflow-hidden shadow-lg;
+
+      .header_info {
+        @apply w-full md:w-1/2 p-8 flex flex-col items-center justify-center text-center;
+
+        .text {
+          @apply font-medium md:text-center;
+        }
+
+        .title {
+          @apply font-bold text-2xl sm:text-4xl capitalize md:text-center;
+        }
+
+        .img_wrapper {
+          @apply flex items-center justify-center mt-8;
+        }
+      }
+
+      .contact_form {
+        @apply w-full md:w-1/2 flex flex-col p-8 bg-white p-8;
+
+        .wrapper {
+          @apply flex flex-col mb-2;
+
+          .form_label {
+            @apply capitalize;
+            color: $primary-700-color;
+          }
+
+          .form_input {
+            @apply p-2 border-2 border-gray-200 rounded-xl resize-none;
+
+            &.input_error {
+              @apply border-red-300;
+            }
+          }
+
+          textarea {
+            min-height: 10rem;
+          }
+
+          p {
+            @apply text-transparent select-none;
+            
+            &.error {
+              @apply text-red-300 select-text;
+            }
+          }
+        }
+      }
+    }
+  }
+}
